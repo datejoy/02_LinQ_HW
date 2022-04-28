@@ -45,6 +45,7 @@ namespace LinQ_HW
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label2 = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.lblMaster = new System.Windows.Forms.Label();
@@ -55,7 +56,6 @@ namespace LinQ_HW
             this.order_DetailsTableAdapter1 = new LinQ_HW.NWDataSetTableAdapters.Order_DetailsTableAdapter();
             this.ordersTableAdapter1 = new LinQ_HW.NWDataSetTableAdapters.OrdersTableAdapter();
             this.productsTableAdapter1 = new LinQ_HW.NWDataSetTableAdapters.ProductsTableAdapter();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -270,6 +270,15 @@ namespace LinQ_HW
             this.splitContainer1.SplitterDistance = 233;
             this.splitContainer1.TabIndex = 149;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(962, 86);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(11, 12);
+            this.label2.TabIndex = 149;
+            this.label2.Text = "0";
+            // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -299,6 +308,7 @@ namespace LinQ_HW
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(720, 361);
             this.dataGridView1.TabIndex = 103;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // lblMaster
             // 
@@ -337,6 +347,10 @@ namespace LinQ_HW
             this.lblDetails.TabIndex = 103;
             this.lblDetails.Text = "訂單明細";
             // 
+            // bindingSource1
+            // 
+            this.bindingSource1.CurrentChanged += new System.EventHandler(this.bindingSource1_CurrentChanged);
+            // 
             // nwDataSet1
             // 
             this.nwDataSet1.DataSetName = "NWDataSet";
@@ -353,15 +367,6 @@ namespace LinQ_HW
             // productsTableAdapter1
             // 
             this.productsTableAdapter1.ClearBeforeFill = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(962, 86);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(11, 12);
-            this.label2.TabIndex = 149;
-            this.label2.Text = "0";
             // 
             // FormHW
             // 

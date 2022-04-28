@@ -64,11 +64,11 @@ namespace LinQ_HW
 
         void showinGriview2()
         {
-            DataRow dro = (DataRow)this.bindingSource1.Current;
-            //以OrderID找
-            int id = (int)dro[0];
-            int i = 0;
-            //while (id !=  )         //ID不重複
+            //DataRow dro = (DataRow)this.bindingSource1.Current;
+            ////以OrderID找
+            //int id = (int)dro[0];  //row的第0列
+            //int i = 0;
+            //while (id !=/*this.nwDataSet1.Orders[i].OrderID */ )         //ID不重複
             //{
             //    i++;
             //    this.dataGridView2.DataSource = this.nwDataSet1.Orders[i].GetChildRows("FK_Order_Details_Orders");
@@ -87,13 +87,13 @@ namespace LinQ_HW
                                                                where o.OrderDate.Year == (int)comboBox1.SelectedItem
                                                                select o;
                 this.dataGridView1.DataSource = YearOfOrder.ToList();
-                //Order_Details
-                IEnumerable<NWDataSet.Order_DetailsRow> detail = from od in nwDataSet1.Order_Details
-                                                                 join o in nwDataSet1.Orders
-                                                                 on od.OrderID equals o.OrderID
-                                                                 where o.OrderDate.Year==(int)comboBox1.SelectedItem
-                                                                 select od;
-               this.dataGridView2.DataSource = detail.ToList();
+               // //Order_Details
+               // IEnumerable<NWDataSet.Order_DetailsRow> detail = from od in nwDataSet1.Order_Details
+               //                                                  join o in nwDataSet1.Orders
+               //                                                  on od.OrderID equals o.OrderID
+               //                                                  where o.OrderDate.Year==(int)comboBox1.SelectedItem
+               //                                                  select od;
+               //this.dataGridView2.DataSource = detail.ToList();
             }
             else
             {
@@ -179,6 +179,7 @@ namespace LinQ_HW
             int page;
             if (int.TryParse(textBox1.Text, out page))
             {
+                
                 if(count*page<this.nwDataSet1.Products.Rows.Count)   //次數<頁數
                 {
                     //載入資料表
@@ -190,10 +191,10 @@ namespace LinQ_HW
                     count++;
                     label2.Text = count + "";
                 }
+                
                 else
                 {
                     count = count - 1;
-                    
                 }
 
             }
@@ -203,5 +204,22 @@ namespace LinQ_HW
             }
 
         }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                var q = from od in this.nwDataSet1.Order_Details
+                        where od.OrderID == (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value
+                        select od;
+                this.dataGridView2.DataSource = q.ToList();
+            }
+        }
+
+        private void bindingSource1_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
