@@ -573,7 +573,7 @@ namespace LinQ_HW {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public OrdersRow AddOrdersRow(string CustomerID, int EmployeeID, System.DateTime OrderDate, System.DateTime RequiredDate, System.DateTime ShippedDate, int ShipVia, decimal Freight, string ShipName, string ShipAddress, string ShipCity, string ShipRegion, string ShipPostalCode, string ShipCountry) {
+            public OrdersRow AddOrdersRow(string CustomerID, int EmployeeID, System.DateTime OrderDate, System.DateTime RequiredDate, object ShippedDate, int ShipVia, decimal Freight, string ShipName, string ShipAddress, string ShipCity, string ShipRegion, string ShipPostalCode, string ShipCountry) {
                 OrdersRow rowOrdersRow = ((OrdersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -648,7 +648,7 @@ namespace LinQ_HW {
                 base.Columns.Add(this.columnOrderDate);
                 this.columnRequiredDate = new global::System.Data.DataColumn("RequiredDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRequiredDate);
-                this.columnShippedDate = new global::System.Data.DataColumn("ShippedDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                this.columnShippedDate = new global::System.Data.DataColumn("ShippedDate", typeof(object), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnShippedDate);
                 this.columnShipVia = new global::System.Data.DataColumn("ShipVia", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnShipVia);
@@ -1615,10 +1615,10 @@ namespace LinQ_HW {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime ShippedDate {
+            public object ShippedDate {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableOrders.ShippedDateColumn]));
+                        return ((object)(this[this.tableOrders.ShippedDateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("資料表 \'Orders\' 中資料行 \'ShippedDate\' 的值是 DBNull。", e);

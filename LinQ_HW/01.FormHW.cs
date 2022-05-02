@@ -53,8 +53,9 @@ namespace LinQ_HW
         private void btnAll_Click(object sender, EventArgs e)
         {
             IEnumerable<LinQ_HW.NWDataSet.OrdersRow> allorder = from o in this.nwDataSet1.Orders
-                                                                where  /*!o.IsShipRegionNull() &&*/ !o.IsShippedDateNull() /*&& !o.IsShipPostalCodeNull()*/
+                                                              //  where  /*!o.IsShipRegionNull() &&*/ !o.IsShippedDateNull() /*&& !o.IsShipPostalCodeNull()*/
                                                                 select o;
+            //在DataSet的資料行裡設定DataType屬性，將System.DateTime改成object就可以顯示null
 
             this.bindingSource1.DataSource = allorder.ToList();
             this.dataGridView1.DataSource = this.bindingSource1;
@@ -154,7 +155,7 @@ namespace LinQ_HW
            // int page;
             if(int.TryParse(textBox1.Text,out int page))
             {
-                if(count*page>page)
+                if(count > 1/**page>page*/)
                 {
                     count--;
                     IEnumerable<NWDataSet.ProductsRow> allpro = from n in this.nwDataSet1.Products
@@ -182,6 +183,7 @@ namespace LinQ_HW
                 
                 if(count*page<this.nwDataSet1.Products.Rows.Count)   //次數<頁數
                 {
+                   
                     //載入資料表
                     IEnumerable<NWDataSet.ProductsRow> allpro = from n in this.nwDataSet1.Products
                                                                 select n;
@@ -189,8 +191,11 @@ namespace LinQ_HW
 
                     this.dataGridView1.DataSource = next10.ToList();
                     count++;
+                    if(count * page > this.nwDataSet1.Products.Rows.Count)
+
                     label2.Text = count + "";
                 }
+
                 
                 else
                 {
@@ -218,7 +223,7 @@ namespace LinQ_HW
 
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
         {
-
+           
         }
 
     }

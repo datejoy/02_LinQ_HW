@@ -46,17 +46,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormHW.cs">
+    <Compile Include="AdvDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdvDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="01.FormHW.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormHW.Designer.cs">
-      <DependentUpon>FormHW.cs</DependentUpon>
+    <Compile Include="01.FormHW.Designer.cs">
+      <DependentUpon>01.FormHW.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm作業_1.cs">
+    <Compile Include="02.Frm作業_2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm作業_1.designer.cs">
-      <DependentUpon>Frm作業_1.cs</DependentUpon>
+    <Compile Include="02.Frm作業_2.designer.cs">
+      <DependentUpon>02.Frm作業_2.cs</DependentUpon>
     </Compile>
     <Compile Include="NWDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -65,11 +70,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormHW.resx">
-      <DependentUpon>FormHW.cs</DependentUpon>
+    <EmbeddedResource Include="01.FormHW.resx">
+      <DependentUpon>01.FormHW.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm作業_1.resx">
-      <DependentUpon>Frm作業_1.cs</DependentUpon>
+    <EmbeddedResource Include="02.Frm作業_2.resx">
+      <DependentUpon>02.Frm作業_2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -80,6 +85,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="AdvDataSet.xsc">
+      <DependentUpon>AdvDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AdvDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AdvDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AdvDataSet.xss">
+      <DependentUpon>AdvDataSet.xsd</DependentUpon>
+    </None>
     <None Include="NWDataSet.xsc">
       <DependentUpon>NWDataSet.xsd</DependentUpon>
     </None>
