@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LinQ_HW;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -161,6 +162,134 @@ namespace MyHomeWork
             {
                 return "New";
             }
+        }
+
+        NorthwindEntities nwEdb = new NorthwindEntities();
+        //NW Products 低中高 價產品 
+        private void button8_Click(object sender, EventArgs e)
+        {
+            var q = from p in this.nwEdb.Products.AsEnumerable()
+                    group p by PriceRange(p.UnitPrice.Value) into g
+                    select new
+                    {
+                        PriceRange = g.Key,
+                        ProductCount = g.Count(),
+                        ProductGroup = g
+                    };
+
+            this.dataGridView1.DataSource = q.ToList();
+            //=========TreeView================================================
+            this.treeView1.Nodes.Clear();
+            foreach(var group in q)
+            {
+                string s = $"{group.PriceRange}({group.ProductCount})";
+                TreeNode node = this.treeView1.Nodes.Add(group.PriceRange.ToString(), s);
+                foreach(var item in group.ProductGroup)
+                {
+                    node.Nodes.Add(item.ProductName);
+                }
+            }
+
+        }
+
+        private string PriceRange(decimal unitPrice)
+        {
+            if(unitPrice<40)
+            {
+                return "Low";
+            }
+            else if(unitPrice<80)
+            {
+                return "Medium";
+            }
+            else
+            {
+                return "High";
+            }
+        }
+
+        // Orders -  Group by 年
+        private void button15_Click(object sender, EventArgs e)
+        {
+            var q = from o in nwEdb.Orders
+                    group o by o.OrderDate.Value.Year into g
+                    select new
+                    {
+                        Year = g.Key,
+                        OrdersCount = g.Count(),
+
+                    };
+            this.dataGridView1.DataSource = q.ToList();
+        }
+
+        // Orders -  Group by 年 / 月
+        private void button10_Click(object sender, EventArgs e)
+        {
+            var q = from o in nwEdb.Orders.AsEnumerable()
+                        // 運算式樹狀架構不得包含元組常值
+                    group o by new { o.OrderDate.Value.Year, o.OrderDate.Value.Month } into g
+                    select new
+                    {
+                        Year_Month =g.Key,
+                        Count = g.Count()
+                    };
+            this.dataGridView1.DataSource = q.ToList();
+        }
+
+        //總銷售金額?
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var q = from od in this.nwEdb.Order_Details
+                    group od by od.Order.OrderDate.Value.Year into g
+                    select new
+                    {
+                        Year = g.Key,
+                        Total =g.Sum(od=>od.UnitPrice*od.Quantity)
+                    };
+            this.dataGridView1.DataSource = q.ToList();
+
+        }
+
+        //銷售最好的top 5業務員
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var q = (from o in this.nwEdb.Order_Details.AsEnumerable()
+                     group o by o.Order.EmployeeID into g
+                     select new
+                     {
+                         EmployeeID = g.Key,
+                         Sum = g.Sum(o => o.UnitPrice * o.Quantity)   //←這裡要的東西得視資料來源裡有的
+                     }).OrderByDescending(g => g.Sum).Select(g=>new {g.EmployeeID,Total=$"{g.Sum:c2}" }).Take(5);
+           // 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　↑格式化後為字串
+            this.dataGridView1.DataSource = q.ToList();
+           
+            //this.dataGridView1.DataSource = this.nwEdb.Order_Details.GroupBy(od => od.Order.EmployeeID)
+            //    .SelectMany(od=>od.Orders(od,o));
+        
+        }
+
+        //     NW 產品最高單價前 5 筆 (包括類別名稱)
+        private void button9_Click(object sender, EventArgs e)
+        {
+            var q = (from p in this.nwEdb.Products
+                     orderby p.UnitPrice descending
+                     select new 
+                     { 
+                     p.ProductID,
+                     p.ProductName,
+                     p.UnitPrice,
+                     p.Category.CategoryName
+                     } ).Take(5);
+            
+            this.dataGridView1.DataSource = q.ToList();
+            //this.dataGridView1.DataSource = this.nwEdb.Products.OrderByDescending(p => p.UnitPrice)
+            //    .SelectMany(p => p.Category, (p, c) => new { p.ProductName, p.UnitPrice, c.??? }).Take(5);
+        }
+
+        //     NW 產品有任何一筆單價大於300 ?
+        private void button7_Click(object sender, EventArgs e)
+        {
+           MessageBox.Show( this.nwEdb.Products.Any(p => p.UnitPrice > 300).ToString());
         }
     }
 }
