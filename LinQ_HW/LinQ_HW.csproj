@@ -33,7 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -63,6 +65,12 @@
     <Compile Include="02.Frm作業_2.designer.cs">
       <DependentUpon>02.Frm作業_2.cs</DependentUpon>
     </Compile>
+    <Compile Include="03.Frm作業_3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="03.Frm作業_3.designer.cs">
+      <DependentUpon>03.Frm作業_3.cs</DependentUpon>
+    </Compile>
     <Compile Include="NWDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -75,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="02.Frm作業_2.resx">
       <DependentUpon>02.Frm作業_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="03.Frm作業_3.resx">
+      <DependentUpon>03.Frm作業_3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

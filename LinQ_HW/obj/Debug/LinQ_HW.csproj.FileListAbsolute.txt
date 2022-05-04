@@ -2,7 +2,6 @@ C:\joyz\joyTest\mylesson\LINQ\LinQ_HW\LinQ_HW\bin\Debug\LinQ_HW.exe.config
 C:\joyz\joyTest\mylesson\LINQ\LinQ_HW\LinQ_HW\bin\Debug\LinQ_HW.exe
 C:\joyz\joyTest\mylesson\LINQ\LinQ_HW\LinQ_HW\bin\Debug\LinQ_HW.pdb
 C:\joyz\joyTest\mylesson\LINQ\LinQ_HW\LinQ_HW\obj\Debug\LinQ_HW.csprojAssemblyReference.cache
-C:\joyz\joyTest\mylesson\LINQ\LinQ_HW\LinQ_HW\obj\Debug\MyHomeWork.Frm作業_1.resources
 C:\joyz\joyTest\mylesson\LINQ\LinQ_HW\LinQ_HW\obj\Debug\LinQ_HW.Properties.Resources.resources
 C:\joyz\joyTest\mylesson\LINQ\LinQ_HW\LinQ_HW\obj\Debug\LinQ_HW.csproj.GenerateResource.cache
 C:\joyz\joyTest\mylesson\LINQ\LinQ_HW\LinQ_HW\obj\Debug\LinQ_HW.csproj.CoreCompileInputs.cache
@@ -31,3 +30,6 @@ C:\JOY\joyTest\mylesson\LINQ\LinQ_HW\LinQ_HW\obj\Debug\LinQ_HW.csproj.GenerateRe
 C:\JOY\joyTest\mylesson\LINQ\LinQ_HW\LinQ_HW\obj\Debug\LinQ_HW.csproj.CoreCompileInputs.cache
 C:\JOY\joyTest\mylesson\LINQ\LinQ_HW\LinQ_HW\obj\Debug\LinQ_HW.exe
 C:\JOY\joyTest\mylesson\LINQ\LinQ_HW\LinQ_HW\obj\Debug\LinQ_HW.pdb
+C:\joyz\joyTest\mylesson\LINQ\LinQ_HW\LinQ_HW\obj\Debug\MyHomeWork.Frm作業_2.resources
+C:\joyz\joyTest\mylesson\LINQ\LinQ_HW\LinQ_HW\obj\Debug\MyHomeWork.Frm作業_3.resources
+C:\JOY\joyTest\mylesson\LINQ\LinQ_HW\LinQ_HW\obj\Debug\MyHomeWork.Frm作業_3.resources
