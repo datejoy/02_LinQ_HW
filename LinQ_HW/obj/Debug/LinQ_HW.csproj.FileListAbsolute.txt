@@ -40,3 +40,10 @@ C:\joyz\joyTest\mylesson\LINQ\LinQ_HW\LinQ_HW\bin\Debug\EntityFramework.SqlServe
 C:\joyz\joyTest\mylesson\LINQ\LinQ_HW\LinQ_HW\bin\Debug\zh-Hant\EntityFramework.resources.dll
 C:\joyz\joyTest\mylesson\LINQ\LinQ_HW\LinQ_HW\obj\Debug\LinQ_HW.csproj.CopyComplete
 C:\joyz\joyTest\mylesson\LINQ\LinQ_HW\LinQ_HW\obj\Debug\LinqLabs.Frm考試.resources
+C:\JOY\joyTest\mylesson\LINQ\LinQ_HW\LinQ_HW\bin\Debug\EntityFramework.dll
+C:\JOY\joyTest\mylesson\LINQ\LinQ_HW\LinQ_HW\bin\Debug\EntityFramework.SqlServer.dll
+C:\JOY\joyTest\mylesson\LINQ\LinQ_HW\LinQ_HW\bin\Debug\EntityFramework.xml
+C:\JOY\joyTest\mylesson\LINQ\LinQ_HW\LinQ_HW\bin\Debug\EntityFramework.SqlServer.xml
+C:\JOY\joyTest\mylesson\LINQ\LinQ_HW\LinQ_HW\bin\Debug\zh-Hant\EntityFramework.resources.dll
+C:\JOY\joyTest\mylesson\LINQ\LinQ_HW\LinQ_HW\obj\Debug\LinqLabs.Frm考試.resources
+C:\JOY\joyTest\mylesson\LINQ\LinQ_HW\LinQ_HW\obj\Debug\LinQ_HW.csproj.CopyComplete

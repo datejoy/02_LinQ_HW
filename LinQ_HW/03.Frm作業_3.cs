@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -75,6 +76,7 @@ namespace MyHomeWork
 
 
         //依 檔案大小 分組檔案 (大中小)
+        IEnumerable<FileInfo> q1;
         private void button38_Click(object sender, EventArgs e)
         {
             System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(@"c:\windows");
@@ -89,6 +91,8 @@ namespace MyHomeWork
                         MyGroup = g
                     };
             this.dataGridView1.DataSource = q.ToList();
+             q1 = files.Where(f => FileSize(f.Length) == this.dataGridView1.CurrentCell.Value.ToString()).OrderByDescending(f => f.Length);
+            this.dataGridView2.DataSource = q1.ToList();
             //=======TreeView===============================================
             this.treeView1.Nodes.Clear();
             foreach (var group in q)
@@ -227,7 +231,8 @@ namespace MyHomeWork
         {
             var q = from o in nwEdb.Orders.AsEnumerable()
                         // 運算式樹狀架構不得包含元組常值
-                    group o by new { o.OrderDate.Value.Year, o.OrderDate.Value.Month } into g
+                    group o by o.OrderDate.Value.ToString("yyyy-MM")  into g
+                                         /*↑格式化new { o.OrderDate.Value.Year, o.OrderDate.Value.Month }*/
                     select new
                     {
                         Year_Month =g.Key,
@@ -259,8 +264,9 @@ namespace MyHomeWork
                      {
                          EmployeeID = g.Key,
                          Sum = g.Sum(o => o.UnitPrice * o.Quantity)   //←這裡要的東西得視資料來源裡有的
-                     }).OrderByDescending(g => g.Sum).Select(g=>new {g.EmployeeID,Total=$"{g.Sum:c2}" }).Take(5);
-           // 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　↑格式化後為字串
+                     }).OrderByDescending(g => g.Sum).Select(g => new { g.EmployeeID, Total = $"{g.Sum:c2}" }).Take(5);
+            // 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　↑格式化後為字串
+
             this.dataGridView1.DataSource = q.ToList();
            
             //this.dataGridView1.DataSource = this.nwEdb.Order_Details.GroupBy(od => od.Order.EmployeeID)
@@ -290,6 +296,11 @@ namespace MyHomeWork
         private void button7_Click(object sender, EventArgs e)
         {
            MessageBox.Show( this.nwEdb.Products.Any(p => p.UnitPrice > 300).ToString());
+        }
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            this.dataGridView2.DataSource = q1.ToList();
         }
     }
 }

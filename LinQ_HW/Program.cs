@@ -18,7 +18,7 @@ namespace LinQ_HW
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Frm考試());
+            Application.Run(new  Frm考試());
         }
     }
 }
